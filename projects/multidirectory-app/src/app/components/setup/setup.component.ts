@@ -53,8 +53,8 @@ export class SetupComponent implements OnInit, AfterViewInit, OnDestroy {
         this.modal.showSpinner();
         this.api.setup(this.setupRequest).pipe(
             catchError(err => {
-                this.toastr.error(err);
-                return EMPTY;
+                this.modal.hideSpinner();
+                throw err
             })
         ).subscribe(res => {
             this.modal.hideSpinner();
