@@ -3,7 +3,6 @@
         <span class="pv-8 accented mb-16">
             {{ "setup.domain-settings.header" | transloco }}
             <hr>
-
         </span>
     </div>
     <md-form #form>
@@ -16,9 +15,10 @@
                 <md-textbox
                     appDomainFormat="^(?:[a-z0-9][a-z0-9-]{0,61}[a-z0-9]\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$"
                     appRequired  
+                    appAutofocus
                     [(ngModel)]="setupRequest.domain"
                 ></md-textbox>
-                <label  class="error-message"  #domainLabel></label>
+                <label class="error-message" #domainLabel></label>
             </div>
         </div>
     </md-form>

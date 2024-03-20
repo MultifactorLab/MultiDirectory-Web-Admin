@@ -81,6 +81,7 @@ export class MdModalComponent implements AfterViewInit, OnDestroy {
     hideSpinner() {
         this.spinnerHost?.hide();
     }
+    
     ngAfterViewInit(): void {
         if(this.opened) {
             this.open();

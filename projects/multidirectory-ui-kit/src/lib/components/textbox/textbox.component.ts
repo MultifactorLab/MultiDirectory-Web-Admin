@@ -17,6 +17,8 @@ export class TextboxComponent extends BaseComponent  {
     @Input() label: string = '';
     @Input() password: boolean = false;
     @Input() autocomplete: boolean = false;
+    @Input() autofocus: boolean = false;
+
     constructor(cdr: ChangeDetectorRef) {
         super(cdr);
     }

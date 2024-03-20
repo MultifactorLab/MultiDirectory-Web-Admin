@@ -10,7 +10,7 @@
             <div class="flex-row flex-gap-10 flex-space-between justify-center">
                 <label class="textbox-label">{{ "setup.admin-settings.admin-login-label" | transloco }}</label>
                 <div class="flex-column  flex-grow-1">
-                    <md-textbox appRequired  [(ngModel)]="setupRequest.username" 
+                    <md-textbox appRequired appAutofocus  [(ngModel)]="setupRequest.username" 
                     ></md-textbox>
                 </div>
             </div>

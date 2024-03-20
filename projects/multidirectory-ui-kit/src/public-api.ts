@@ -35,3 +35,4 @@ export * from './lib/components/multiselect/multiselect.component';
 export * from './lib/components/tooltip/tooltip.component';
 export * from './lib/components/datepicker/datepicker.component';
 export * from './lib/components/alert/alert.component';
+export * from './lib/directives/autofocus.directive';

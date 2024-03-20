@@ -40,6 +40,7 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { AlertComponent } from './components/alert/alert.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { AlertComponent } from './components/alert/alert.component';
     MultiselectComponent,
     TooltipComponent,
     DatepickerComponent,
-    AlertComponent
+    AlertComponent,
+    AutofocusDirective
   ],
   imports: [
     CommonModule,
@@ -118,7 +120,8 @@ import { AlertComponent } from './components/alert/alert.component';
     MultiselectComponent,
     TooltipComponent,
     DatepickerComponent,
-    AlertComponent
+    AlertComponent,
+    AutofocusDirective
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

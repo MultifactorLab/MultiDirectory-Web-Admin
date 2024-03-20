@@ -7,6 +7,7 @@
     (blur)="onBlur()"
     id="{{__ID}}"
     #input
+    tabindex="0"
 />
 </div>
 <md-error-label *ngIf="controlAccessor && (controlAccessor.dirty || controlAccessor.touched)" [ngControl]="controlAccessor"></md-error-label>
