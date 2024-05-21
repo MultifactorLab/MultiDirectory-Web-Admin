@@ -1,0 +1,38 @@
+
+name: build
+on: [repository_dispatch]
+env:
+  REPO: ${{ github.repository }}
+
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get event Information
+        run: |
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}' with tag '${{ github.event.client_payload.tag }}'"
+      - name: downcase REPO
+        run: |
+          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build docker image
+        env:
+          TAG: ghcr.io/${{ env.REPO }}:${{ github.event.client_payload.tag }}
+        run: |
+          echo $TAG
+          docker build -f Dockerfile . --tag $TAG --cache-from $TAG
+          docker push $TAG
+
+      - name: RESPONSE - Dispatch response event to INIT repository
+        run: |
+          curl -X POST https://api.github.com/repos/MultiDirectoryLab/MultiDirectory/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.ACCESS_TOKEN_MD }} \
+          --data '{"event_type": "Workflow Response", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
